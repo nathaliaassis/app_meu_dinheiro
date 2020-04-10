@@ -55,7 +55,7 @@ export function AppRoutes() {
         showLabel: false,
         keyboardHidesTabBar: true,
         style: {
-          height: 60,
+          borderTopColor: '#1b2c4c',
           paddingBottom: 2,
           backgroundColor: '#1b2c4c'
         }
@@ -64,7 +64,6 @@ export function AppRoutes() {
       <Tab.Screen name='Dashboard'
         component={Dashboard}
         options={{
-          tabBarLabel: 'Home',
           tabBarIcon: ({ color }) => (
             <Icon name="equalizer" size={32} color={color} />
           )
