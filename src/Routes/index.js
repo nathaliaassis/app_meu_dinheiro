@@ -53,6 +53,7 @@ export function AppRoutes() {
       tabBarOptions={{
         activeTintColor: '#fff',
         showLabel: false,
+        keyboardHidesTabBar: true,
         style: {
           height: 60,
           paddingBottom: 2,

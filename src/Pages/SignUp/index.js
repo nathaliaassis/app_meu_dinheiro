@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { Platform } from 'react-native';
 import firebase from '../../Services/firebaseConnection';
-import Background from '../../Assets/globalStyle';
-import { Container, Title, AreaInput, Input, Btn, BtnText, SignInLink, SignInText } from './styles';
+import { Container, Title, SignInLink, SignInText } from './styles';
+
+
+import { Background } from '../../Assets/globalStyle';
+import Input from '../../Components/Input';
+import Button from '../../Components/Button';
+
 
 export default function SignUp({ navigation }) {
 
@@ -41,37 +46,23 @@ export default function SignUp({ navigation }) {
     <Background>
       <Container behavior={Platform.OS === 'ios' ? 'padding' : ''}>
         <Title>Quase tudo pronto =)</Title>
-        <AreaInput>
-          <Input
-            placeholder='Nome'
-            autoCorrect={false}
-            autoCapitalize='none'
-            value={nome}
-            onChangeText={(nome) => setNome(nome)}
-          />
-        </AreaInput>
-        <AreaInput>
-          <Input
-            placeholder='E-mail'
-            autoCorrect={false}
-            autoCapitalize='none'
-            value={email}
-            onChangeText={(email) => setEmail(email)}
-          />
-        </AreaInput>
-        <AreaInput>
-          <Input
-            placeholder='Senha'
-            autoCorrect={false}
-            autoCapitalize='none'
-            secureTextEntry={true}
-            value={password}
-            onChangeText={(password) => setPassword(password)}
-          />
-        </AreaInput>
-        <Btn onPress={handleSubmit} >
-          <BtnText>Cadastrar</BtnText>
-        </Btn>
+        <Input
+          placeholder='Nome'
+          value={nome}
+          onChangeText={(nome) => setNome(nome)}
+        />
+        <Input
+          placeholder='E-mail'
+          value={email}
+          onChangeText={(email) => setEmail(email)}
+        />
+        <Input
+          placeholder='Senha'
+          secureTextEntry={true}
+          value={password}
+          onChangeText={(password) => setPassword(password)}
+        />
+        <Button onPress={handleSubmit} name='Cadastrar' />
 
         <SignInLink onPress={() => navigation.navigate('SignIn')}>
           <SignInText>Já possuo uma conta</SignInText>
