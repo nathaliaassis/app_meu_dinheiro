@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
+import { Platform } from 'react-native';
 import { Container, Logo, AreaInput, Input, Btn, BtnText, SignUpLink, SignUpText, Backround } from './styles';
-export default function SignIn() {
+
+export default function SignIn({ navigation }) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   return (
     <Backround>
-      <Container>
+      <Container behavior={Platform.OS === 'ios' ? 'padding' : ''}>
         <Logo source={require('../../Assets/img/logo.png')} />
         <AreaInput>
           <Input
@@ -30,7 +32,7 @@ export default function SignIn() {
         <Btn>
           <BtnText>Entrar</BtnText>
         </Btn>
-        <SignUpLink>
+        <SignUpLink onPress={() => navigation.navigate('SignUp')}>
           <SignUpText>Criar minha conta</SignUpText>
         </SignUpLink>
       </Container>
