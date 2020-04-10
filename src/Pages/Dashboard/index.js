@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
 import firebase from '../../Services/firebaseConnection';
-import { Container } from './styles';
+import { Container, Title } from './styles';
+import Button from '../../Components/Button';
 
 export default function Dashboard({ navigation }) {
   function logOut() {
@@ -10,10 +10,8 @@ export default function Dashboard({ navigation }) {
   }
   return (
     <Container>
-      <Text>alo alo alo alo dash</Text>
-      <TouchableOpacity onPress={logOut}>
-        <Text>sair</Text>
-      </TouchableOpacity>
+      <Title>Dashboard</Title>
+      <Button name="Sair" onPress={logOut} />
     </Container>
   )
 }

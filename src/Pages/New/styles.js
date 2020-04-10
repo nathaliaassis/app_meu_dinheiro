@@ -21,4 +21,5 @@ export const PickerItem = styled.Picker`
   width: 90%;
   border-radius: 5px;
   font-size: 18px;
+  margin-bottom: 20px;
 `;

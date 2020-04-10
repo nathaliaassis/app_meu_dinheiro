@@ -1,6 +1,5 @@
 import React from 'react';
-import { Container } from './styles';
-import { Title } from '../New/styles';
+import { Container, Title } from './styles';
 
 export default function Profile() {
   return (
