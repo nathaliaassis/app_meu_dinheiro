@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import firebase from '../../Services/firebaseConnection';
-import { View, Text } from 'react-native';
+import { ActivityIndicator } from 'react-native';
+import { Background } from '../../Assets/globalStyle';
+import { Container } from './styles';
 
 export default function Preload({ navigation }) {
 
@@ -15,6 +17,10 @@ export default function Preload({ navigation }) {
   }, []);
 
   return (
-    <View><Text>preload</Text></View>
+    <Background>
+      <Container>
+        <ActivityIndicator size={50} color='#fff' />
+      </Container>
+    </Background>
   );
 }

@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 import firebase from '../../Services/firebaseConnection';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Container } from './styles';
 
 export default function Dashboard({ navigation }) {
   function logOut() {
@@ -9,13 +9,15 @@ export default function Dashboard({ navigation }) {
     navigation.navigate('SignIn');
   }
   return (
-    <>
-      <View>
-        <Text>alo alo alo alo dash</Text>
-        <TouchableOpacity onPress={logOut}>
-          <Text>sair</Text>
-        </TouchableOpacity>
-      </View>
-    </>
+    <Container>
+      <Text>alo alo alo alo dash</Text>
+      <TouchableOpacity onPress={logOut}>
+        <Text>sair</Text>
+      </TouchableOpacity>
+    </Container>
   )
+}
+
+Dashboard.navigationOptions = {
+  tabBarLabel: 'Home',
 }

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Platform } from 'react-native';
 import firebase from '../../Services/firebaseConnection';
-import { Container, Title, AreaInput, Input, Btn, BtnText, SignInLink, SignInText, Backround } from './styles';
+import Background from '../../Assets/globalStyle';
+import { Container, Title, AreaInput, Input, Btn, BtnText, SignInLink, SignInText } from './styles';
 
 export default function SignUp({ navigation }) {
 
@@ -37,7 +38,7 @@ export default function SignUp({ navigation }) {
   }
 
   return (
-    <Backround>
+    <Background>
       <Container behavior={Platform.OS === 'ios' ? 'padding' : ''}>
         <Title>Quase tudo pronto =)</Title>
         <AreaInput>
@@ -76,6 +77,6 @@ export default function SignUp({ navigation }) {
           <SignInText>Já possuo uma conta</SignInText>
         </SignInLink>
       </Container>
-    </Backround>
+    </Background>
   )
 }

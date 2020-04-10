@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Platform, Keyboard, AsyncStorage } from 'react-native';
 import firebase from '../../Services/firebaseConnection';
 
-import { Container, Logo, AreaInput, Input, Btn, BtnText, SignUpLink, SignUpText, Backround } from './styles';
+import { Background } from '../../Assets/globalStyle';
+import { Container, Logo, AreaInput, Input, Btn, BtnText, SignUpLink, SignUpText } from './styles';
 
 export default function SignIn({ navigation }) {
 
@@ -27,7 +28,7 @@ export default function SignIn({ navigation }) {
   }
 
   return (
-    <Backround>
+    <Background>
       <Container behavior={Platform.OS === 'ios' ? 'padding' : ''}>
         <Logo source={require('../../Assets/img/logo.png')} />
         <AreaInput>
@@ -56,6 +57,6 @@ export default function SignIn({ navigation }) {
           <SignUpText>Criar minha conta</SignUpText>
         </SignUpLink>
       </Container>
-    </Backround>
+    </Background>
   )
 }
