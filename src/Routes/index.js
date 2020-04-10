@@ -3,22 +3,27 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import Preload from '../Components/Preload';
+
 import SignIn from '../Pages/SignIn';
 import SignUp from '../Pages/SignUp';
-import Home from '../Pages/Home';
+import Dashboard from '../Pages/Dashboard';
 
 const Stack = createStackNavigator();
 
-export function Routes() {
+export function Sign() {
   return (
     <>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName='SignIn'
           screenOptions={{
             headerShown: false,
           }}
         >
+          <Stack.Screen
+            name='Preload'
+            component={Preload}
+          />
           <Stack.Screen
             name='SignIn'
             component={SignIn}
@@ -27,7 +32,10 @@ export function Routes() {
             name='SignUp'
             component={SignUp}
           />
-          <Stack.Screen name='Home' component={Home} />
+          <Stack.Screen
+            name='AppRoutes'
+            component={AppRoutes}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>
@@ -35,21 +43,12 @@ export function Routes() {
 }
 
 const Tab = createBottomTabNavigator();
-export function HomeRoutes() {
+
+export function AppRoutes() {
   return (
-    <>
-      <NavigationContainer>
-        <Tab.Navigator
-          initialRouteName='SignIn'
-        >
-          <Tab.Screen
-            name='SignIn'
-            component={SignIn}
-          />
-          <Tab.Screen name='Home' component={Home} />
-        </Tab.Navigator>
-      </NavigationContainer>
-    </>
+    <Tab.Navigator>
+      <Tab.Screen name='Dashboard' component={Dashboard} />
+    </Tab.Navigator>
   );
 }
 

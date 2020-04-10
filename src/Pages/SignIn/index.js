@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Platform, Keyboard } from 'react-native';
+import { Platform, Keyboard, AsyncStorage } from 'react-native';
 import firebase from '../../Services/firebaseConnection';
 
 import { Container, Logo, AreaInput, Input, Btn, BtnText, SignUpLink, SignUpText, Backround } from './styles';

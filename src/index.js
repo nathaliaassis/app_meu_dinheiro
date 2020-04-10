@@ -1,7 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
-import { Routes } from './Routes';
+import { Sign } from './Routes';
 
 export default function App() {
   return (
@@ -11,7 +11,7 @@ export default function App() {
         barStyle='light-content'
         translucent={true}
       />
-      <Routes />
+      <Sign />
     </>
   );
 }
