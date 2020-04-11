@@ -25,7 +25,7 @@ export default function SignUp({ navigation }) {
           let uid = firebase.auth().currentUser.uid;
           await firebase.database().ref('users').child(uid).set({
             saldo: 0,
-            nome
+            nome: nome,
           })
         }).catch((error) => {
           if (error.code == 'auth/weak-password') {
@@ -35,16 +35,14 @@ export default function SignUp({ navigation }) {
             alert('E-mail inválido.');
           }
         });
-      setNome('');
-      setEmail('');
-      setPassword('');
+      navigation.navigate('SignIn');
       Keyboard.dismiss();
     }
   }
 
   return (
     <Background>
-      <Container behavior={Platform.OS === 'ios' ? 'padding' : ''}>
+      <Container behavior={Platform.OS === 'ios' ? 'padding' : ''} enabled>
         <Title>Quase tudo pronto =)</Title>
         <Input
           placeholder='Nome'

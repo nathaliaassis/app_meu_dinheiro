@@ -15,6 +15,7 @@ export default function SignIn({ navigation }) {
   function handleSubmit() {
     if (email !== '' && password !== '') {
       firebase.auth().signInWithEmailAndPassword(email, password)
+
         .catch((error) => {
           if (error.code == 'auth/weak-password') {
             alert('Sua senha deve ter pelo menos 6 caracteres.');
@@ -22,7 +23,12 @@ export default function SignIn({ navigation }) {
           if (error.code == 'auth/invalid-email') {
             alert('E-mail inválido.');
           }
+          else {
+            alert('Usuário não encontrado, verifique se seu e-mail está correto.' + '[ ' + error.code + ']')
+          }
         });
+
+
       setEmail('');
       setPassword('');
       Keyboard.dismiss();
@@ -31,7 +37,7 @@ export default function SignIn({ navigation }) {
 
   return (
     <Background>
-      <Container behavior={Platform.OS === 'ios' ? 'padding' : ''}>
+      <Container behavior={Platform.OS === 'ios' ? 'padding' : ''} enabled>
         <Logo source={require('../../Assets/img/logo.png')} />
 
         <Input

@@ -14,12 +14,3 @@ export const Title = styled.Text`
   margin-bottom: 24px;
 `;
 
-export const PickerItem = styled.Picker`
-  flex-direction: row;
-  background-color: white;
-  height: 45px;
-  width: 90%;
-  border-radius: 5px;
-  font-size: 18px;
-  margin-bottom: 20px;
-`;

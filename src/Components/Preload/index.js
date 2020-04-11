@@ -9,9 +9,9 @@ export default function Preload({ navigation }) {
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        navigation.navigate('Dashboard');
-      } else {
         navigation.navigate('AppRoutes');
+      } else {
+        navigation.navigate('SignIn');
       }
     });
   }, []);

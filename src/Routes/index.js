@@ -50,6 +50,7 @@ const Tab = createBottomTabNavigator();
 export function AppRoutes() {
   return (
     <Tab.Navigator
+      initialRouteName="Dashboard"
       tabBarOptions={{
         activeTintColor: '#fff',
         showLabel: false,

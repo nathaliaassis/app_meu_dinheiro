@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import firebase from '../../Services/firebaseConnection';
-import { Keyboard, Picker, Platform, Alert } from 'react-native';
+import { Keyboard, Platform, Alert, TouchableWithoutFeedback } from 'react-native';
 
-import { Container, Title, PickerItem } from './styles';
+import { Container, Title} from './styles';
 import { Background } from '../../Assets/globalStyle';
 import Input from '../../Components/Input';
 import Button from '../../Components/Button';
@@ -36,8 +36,6 @@ export default function New({ navigation }) {
   }
 
   async function handleAdd() {
-    setValor('');
-    navigation.navigate('Dashboard');
     let uid = firebase.auth().currentUser.uid;
     let key = firebase.database().ref('historico').child(uid).push().key;
     await firebase.database().ref('historico').child(uid).child(key).set({
@@ -53,40 +51,43 @@ export default function New({ navigation }) {
 
       tipo === 'despesa' ? saldo -= parseFloat(valor) : saldo += parseFloat(valor);
 
-      user.set({
-        saldo: saldo
-      });
+      user.child('saldo').set(saldo);
     }).catch((error) =>
       alert(error)
-    )
+    );
+    setValor('');
+    navigation.navigate('Dashboard');
   }
 
   return (
     <Background>
-      <Container behavior={Platform.OS === 'ios' ? 'padding' : ''}>
-        <Title>Criar Novo</Title>
-        <Input
-          placeholder='Valor desejado'
-          keyboardType='numeric'
-          value={valor}
-          onChangeText={(valor) => {
-            setValor(valor);
-          }}
-          returnKeyType='next'
-          onSubmitEditing={() => Keyboard.dismiss()}
-        />
-        <PickerItem
-          selectedValue={tipo}
-          onValueChange={(itemValue, itemIndex) => {
-            setTipo(itemValue)
-          }}
-        >
-          <Picker.Item label='Receita' value='receita' />
-          <Picker.Item label='Despesa' value='despesa' />
-        </PickerItem>
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+        <Container behavior={Platform.OS === 'ios' ? 'padding' : ''}>
+          <Title>Criar Novo</Title>
+          <Input
+            placeholder='Valor desejado'
+            keyboardType='numeric'
+            value={valor}
+            onChangeText={(valor) => {
+              setValor(valor);
+            }}
+            returnKeyType='next'
+            onSubmitEditing={() => Keyboard.dismiss()}
+          />
+          <PickerItem
+            selectedValue={tipo}
+            onValueChange={(itemValue, itemIndex) => {
+              setTipo(itemValue)
+            }}
+          >
+            <Picker.Item label='Receita' value='receita' />
+            <Picker.Item label='Despesa' value='despesa' />
+          </PickerItem>
 
-        <Button onPress={handleSubmit} name='Registrar' />
-      </Container>
+          <Button onPress={handleSubmit} name='Registrar' />
+        </Container>
+
+      </TouchableWithoutFeedback>
     </Background>
   );
 }
