@@ -2,19 +2,20 @@ import React, { useState } from 'react';
 import firebase from '../../Services/firebaseConnection';
 import { Keyboard, Platform, Alert, TouchableWithoutFeedback } from 'react-native';
 
-import { Container, Title} from './styles';
+import { Container, Title } from './styles';
 import { Background } from '../../Assets/globalStyle';
 import Input from '../../Components/Input';
 import Button from '../../Components/Button';
+import Picker from '../../Components/Picker';
 
 export default function New({ navigation }) {
 
   const [valor, setValor] = useState('');
-  const [tipo, setTipo] = useState('receita');
+  const [tipo, setTipo] = useState(null);
 
   function handleSubmit() {
 
-    if (isNaN(parseFloat(valor))) {
+    if (isNaN(parseFloat(valor)) || tipo === null) {
       alert('Preencha todos os campos!');
       return;
     }
@@ -74,15 +75,7 @@ export default function New({ navigation }) {
             returnKeyType='next'
             onSubmitEditing={() => Keyboard.dismiss()}
           />
-          <PickerItem
-            selectedValue={tipo}
-            onValueChange={(itemValue, itemIndex) => {
-              setTipo(itemValue)
-            }}
-          >
-            <Picker.Item label='Receita' value='receita' />
-            <Picker.Item label='Despesa' value='despesa' />
-          </PickerItem>
+          <Picker onChange={setTipo} />
 
           <Button onPress={handleSubmit} name='Registrar' />
         </Container>
