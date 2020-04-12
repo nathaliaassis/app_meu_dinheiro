@@ -28,9 +28,6 @@ export default function SignIn({ navigation }) {
           }
         });
 
-
-      setEmail('');
-      setPassword('');
       Keyboard.dismiss();
     }
   }

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import firebase from '../../Services/firebaseConnection';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import HistoricoList from '../../Components/HistoricoList';
+import { SafeAreaView } from 'react-native';
 
+import HistoricoList from '../../Components/HistoricoList';
 import { Container, AreaSaldo, SaldoTitle, Saldo, Registros, Title, IconRight, List } from './styles';
 import { Background } from '../../Assets/globalStyle';
-
 
 
 export default function Dashboard({ navigation }) {
@@ -45,24 +45,26 @@ export default function Dashboard({ navigation }) {
   return (
     <Background>
       <Container>
-        <AreaSaldo>
-          <SaldoTitle>Saldo Atual</SaldoTitle>
-          <Saldo>R$ {saldo}</Saldo>
-        </AreaSaldo>
+        <SafeAreaView style={{ justifyContent: 'center' }}>
+          <AreaSaldo>
+            <SaldoTitle>Saldo Atual</SaldoTitle>
+            <Saldo>R$ {saldo}</Saldo>
+          </AreaSaldo>
 
-        <Registros>
-          <Title>Registros do dia</Title>
-          <IconRight>
-            <Icon name="chevron-right" size={30} color="#FFF" />
-          </IconRight>
-        </Registros>
+          <Registros>
+            <Title>Registros do dia</Title>
+            <IconRight>
+              <Icon name="chevron-right" size={30} color="#FFF" />
+            </IconRight>
+          </Registros>
 
-        <List
-          keyExtractor={item => item.key}
-          data={historico}
-          renderItem={({ item }) => (<HistoricoList data={item} />)}
-        />
+          <List
+            keyExtractor={item => item.key}
+            data={historico}
+            renderItem={({ item }) => (<HistoricoList data={item} />)}
+          />
 
+        </SafeAreaView>
       </Container>
     </Background>
   )

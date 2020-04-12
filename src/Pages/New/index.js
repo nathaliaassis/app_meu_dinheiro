@@ -64,6 +64,7 @@ export default function New({ navigation }) {
     <Background>
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <Container behavior={Platform.OS === 'ios' ? 'padding' : ''}>
+
           <Title>Criar Novo</Title>
           <Input
             placeholder='Valor desejado'
@@ -78,8 +79,8 @@ export default function New({ navigation }) {
           <Picker onChange={setTipo} />
 
           <Button onPress={handleSubmit} name='Registrar' />
-        </Container>
 
+        </Container>
       </TouchableWithoutFeedback>
     </Background>
   );
